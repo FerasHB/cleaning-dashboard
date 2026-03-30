@@ -1,4 +1,5 @@
 import type { JobStatus } from "@/data/jobs";
+import StatusBadge from "@/components/StatusBadge";
 
 type JobCardProps = {
   customerName: string;
@@ -21,12 +22,6 @@ export default function JobCard({
   onStart,
   onComplete,
 }: JobCardProps) {
-  const statusStyles = {
-    Offen: "bg-yellow-500/15 text-yellow-300 border border-yellow-500/20",
-    "In Arbeit": "bg-blue-500/15 text-blue-300 border border-blue-500/20",
-    Erledigt: "bg-green-500/15 text-green-300 border border-green-500/20",
-  };
-
   return (
     <div className="rounded-2xl border border-gray-800 bg-gray-900 p-4 shadow-md">
       <h2 className="font-semibold text-white">{customerName}</h2>
@@ -40,11 +35,7 @@ export default function JobCard({
       <div className="mt-3 flex items-center justify-between">
         <span className="text-xs text-gray-400">👷 {employee}</span>
 
-        <span
-          className={`rounded-full px-2 py-1 text-xs ${statusStyles[status]}`}
-        >
-          {status}
-        </span>
+        <StatusBadge status={status} />
       </div>
 
       <div className="mt-4">
