@@ -3,54 +3,15 @@
 import { useState } from "react";
 import JobCard from "@/components/JobCard";
 import StatCard from "@/components/StatCard";
+import { jobs } from "@/data/jobs";
 
-type JobStatus = "Alle" | "Offen" | "In Arbeit" | "Erledigt";
+type FilterStatus = "Alle" | "Offen" | "In Arbeit" | "Erledigt";
 
-type CleaningJob = {
-  id: number;
-  customerName: string;
-  location: string;
-  time: string;
-  service: string;
-  status: Exclude<JobStatus, "Alle">;
-  employee: string;
-};
-
-const jobs: CleaningJob[] = [
-  {
-    id: 1,
-    customerName: "Praxis Dr. Weber",
-    location: "Lüdenscheid",
-    time: "09:00",
-    service: "Praxisreinigung",
-    status: "In Arbeit",
-    employee: "Ali",
-  },
-  {
-    id: 2,
-    customerName: "Büro Schneider",
-    location: "Dortmund",
-    time: "11:30",
-    service: "Büroreinigung",
-    status: "Offen",
-    employee: "Mona",
-  },
-  {
-    id: 3,
-    customerName: "Fitness Studio Move",
-    location: "Hagen",
-    time: "14:00",
-    service: "Unterhaltsreinigung",
-    status: "Erledigt",
-    employee: "Sara",
-  },
-];
-
-const filters: JobStatus[] = ["Alle", "Offen", "In Arbeit", "Erledigt"];
+const filters: FilterStatus[] = ["Alle", "Offen", "In Arbeit", "Erledigt"];
 
 export default function Home() {
   const [search, setSearch] = useState<string>("");
-  const [selectedStatus, setSelectedStatus] = useState<JobStatus>("Alle");
+  const [selectedStatus, setSelectedStatus] = useState<FilterStatus>("Alle");
 
   const totalJobs = jobs.length;
   const openJobs = jobs.filter((job) => job.status === "Offen").length;
