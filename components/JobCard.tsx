@@ -7,6 +7,8 @@ type JobCardProps = {
   service: string;
   status: JobStatus;
   employee: string;
+  onStart: () => void;
+  onComplete: () => void;
 };
 
 export default function JobCard({
@@ -16,6 +18,8 @@ export default function JobCard({
   service,
   status,
   employee,
+  onStart,
+  onComplete,
 }: JobCardProps) {
   const statusStyles = {
     Offen: "bg-yellow-500/15 text-yellow-300 border border-yellow-500/20",
@@ -41,6 +45,32 @@ export default function JobCard({
         >
           {status}
         </span>
+      </div>
+
+      <div className="mt-4">
+        {status === "Offen" && (
+          <button
+            onClick={onStart}
+            className="w-full rounded-xl bg-white px-4 py-3 text-sm font-medium text-black transition hover:bg-gray-200"
+          >
+            Starten
+          </button>
+        )}
+
+        {status === "In Arbeit" && (
+          <button
+            onClick={onComplete}
+            className="w-full rounded-xl bg-blue-500 px-4 py-3 text-sm font-medium text-white transition hover:bg-blue-400"
+          >
+            Als erledigt markieren
+          </button>
+        )}
+
+        {status === "Erledigt" && (
+          <div className="rounded-xl border border-green-500/20 bg-green-500/10 px-4 py-3 text-center text-sm text-green-300">
+            Auftrag abgeschlossen
+          </div>
+        )}
       </div>
     </div>
   );

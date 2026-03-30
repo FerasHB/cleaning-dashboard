@@ -3,7 +3,8 @@
 import { useState } from "react";
 import JobCard from "@/components/JobCard";
 import StatCard from "@/components/StatCard";
-import { jobs } from "@/data/jobs";
+import { jobs as initialJobs } from "@/data/jobs";
+import type { CleaningJob } from "@/data/jobs";
 
 type FilterStatus = "Alle" | "Offen" | "In Arbeit" | "Erledigt";
 
@@ -12,6 +13,7 @@ const filters: FilterStatus[] = ["Alle", "Offen", "In Arbeit", "Erledigt"];
 export default function Home() {
   const [search, setSearch] = useState<string>("");
   const [selectedStatus, setSelectedStatus] = useState<FilterStatus>("Alle");
+  const [jobs, setJobs] = useState<CleaningJob[]>(initialJobs);
 
   const totalJobs = jobs.length;
   const openJobs = jobs.filter((job) => job.status === "Offen").length;
@@ -19,6 +21,22 @@ export default function Home() {
     (job) => job.status === "In Arbeit",
   ).length;
   const completedJobs = jobs.filter((job) => job.status === "Erledigt").length;
+
+  const handleStartJob = (id: number) => {
+    setJobs((prevJobs) =>
+      prevJobs.map((job) =>
+        job.id === id ? { ...job, status: "In Arbeit" } : job,
+      ),
+    );
+  };
+
+  const handleCompleteJob = (id: number) => {
+    setJobs((prevJobs) =>
+      prevJobs.map((job) =>
+        job.id === id ? { ...job, status: "Erledigt" } : job,
+      ),
+    );
+  };
 
   const filteredJobs = jobs.filter((job) => {
     const matchesSearch = job.customerName
@@ -86,6 +104,8 @@ export default function Home() {
               service={job.service}
               status={job.status}
               employee={job.employee}
+              onStart={() => handleStartJob(job.id)}
+              onComplete={() => handleCompleteJob(job.id)}
             />
           ))}
 
