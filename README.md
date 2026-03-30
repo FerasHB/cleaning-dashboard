@@ -1,36 +1,137 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🧹 Cleaning Dashboard
 
-## Getting Started
+A mobile-first operations dashboard built for cleaning companies — designed to manage jobs, teams, and schedules in one clean interface.
 
-First, run the development server:
+---
+
+## 📋 Overview
+
+Cleaning Dashboard is a modern web application that gives cleaning companies a simple way to manage their daily operations. Instead of juggling spreadsheets or paper lists, teams can track jobs, assign staff, and monitor progress in real time — all from a mobile-friendly dashboard.
+
+The project was built to practice building real-world, production-style applications with a modern tech stack.
+
+---
+
+## ✨ Key Features
+
+- 📱 **Mobile-first design** — fully responsive, works great on phones and tablets
+- 🗓️ **Job scheduling** — create, view, and manage cleaning jobs by date
+- 👥 **Team management** — assign staff to jobs and track availability
+- 📊 **Status tracking** — monitor job progress (pending, in progress, completed)
+- 🔍 **Filtering & search** — quickly find jobs or team members
+- 🌙 **Clean UI** — minimal, distraction-free interface built with Tailwind CSS
+
+---
+
+## 🛠️ Tech Stack
+
+| Technology | Purpose |
+|---|---|
+| [Next.js 14](https://nextjs.org/) (App Router) | Framework & routing |
+| [TypeScript](https://www.typescriptlang.org/) | Type safety |
+| [Tailwind CSS](https://tailwindcss.com/) | Styling |
+| [React](https://react.dev/) | UI components |
+
+---
+
+## 🧠 Concepts Used
+
+- **React Server Components** — fetching data on the server for better performance
+- **Client Components** — handling interactivity where needed (`"use client"`)
+- **TypeScript interfaces & types** — defining clear data shapes for jobs, staff, etc.
+- **Custom hooks** — reusable logic (e.g. `useJobs`, `useFilter`)
+- **Component composition** — building complex UIs from small, reusable pieces
+- **Conditional rendering** — showing different UI states (loading, empty, error)
+- **Props & state management** — passing data down and managing local UI state
+
+---
+
+## 📸 Screenshots
+
+> _Screenshots coming soon — the app is currently in development._
+
+<!-- Add screenshots here once available:
+![Dashboard Overview](./screenshots/dashboard.png)
+![Job Detail View](./screenshots/job-detail.png)
+-->
+
+---
+
+## 🚀 Installation
 
 ```bash
+# 1. Clone the repository
+git clone https://github.com/FerasHB/cleaning-dashboard.git
+
+# 2. Navigate into the project folder
+cd cleaning-dashboard
+
+# 3. Install dependencies
+npm install
+
+# 4. Start the development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📁 Project Structure
 
-## Learn More
+```
+cleaning-dashboard/
+├── app/                    # Next.js App Router pages & layouts
+│   ├── layout.tsx          # Root layout
+│   ├── page.tsx            # Dashboard home page
+│   └── jobs/
+│       └── [id]/page.tsx   # Job detail page
+├── components/             # Reusable UI components
+│   ├── JobCard.tsx
+│   ├── StaffList.tsx
+│   └── StatusBadge.tsx
+├── hooks/                  # Custom React hooks
+│   └── useJobs.ts
+├── types/                  # TypeScript type definitions
+│   └── index.ts
+├── lib/                    # Utility functions & helpers
+│   └── utils.ts
+└── public/                 # Static assets
+```
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🎯 Goal of This Project
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+This project is part of my developer portfolio. My goal was to build something that looks and feels like a real product — not just a tutorial clone.
 
-## Deploy on Vercel
+I wanted to practice:
+- Structuring a **Next.js App Router** project from scratch
+- Writing clean, typed code with **TypeScript**
+- Building a **mobile-first UI** with Tailwind CSS
+- Thinking about real user needs and translating them into features
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🔮 Future Improvements
+
+- [ ] Authentication (login for admins and staff)
+- [ ] Database integration (e.g. Supabase or PlanetScale)
+- [ ] Push notifications for job updates
+- [ ] Export reports as PDF
+- [ ] Dark mode support
+- [ ] Multi-language support (DE / EN)
+
+---
+
+## 👤 Author
+
+Feras Hababa
+Junior Frontend Developer
+
+- GitHub: [@your-username](https://github.com/FerasHB)
+
+
+---
+
+> Built with ☕ and a lot of `console.log()` — feel free to reach out if you have feedback!
