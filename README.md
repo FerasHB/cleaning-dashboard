@@ -85,6 +85,7 @@ https://github.com/FerasHB
 
 ## 📸 Screenshots
 
-![Dashboard](./public/screenshots/dashboard.png)
-![Jobs](./public/screenshots/jobs-list.png)
-![Status](./public/screenshots/status-view.png)
+<p align="center">
+  <img src="./public/screenshots/dashboard.png" width="30%" />
+  <img src="./public/screenshots/jobs-list.png" width="30%" />
+</p>
